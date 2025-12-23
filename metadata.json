@@ -1,0 +1,8 @@
+{
+  "name": "RePhone - 頂級二手手機銷售專家",
+  "description": "專業、透明、高品質的二手手機電商平台。每一台手機都經過 70+ 項專業檢測，提供 180 天保固，讓您以超值的價格享受如新機般的體驗。",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

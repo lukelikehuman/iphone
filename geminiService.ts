@@ -1,10 +1,21 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// 宣告 process 以避免 TS 錯誤
+declare const process: {
+  env: {
+    API_KEY: string;
+  };
+};
 
 export async function getPhoneRecommendation(userQuery: string) {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    return "系統偵測到未設定 API Key。請在 Vercel 環境變數中設定 API_KEY。";
+  }
+
   try {
+    const ai = new GoogleGenAI({ apiKey });
     const response = await ai.models.generateContent({
       model: "gemini-3-flash-preview",
       contents: `身為一位專業的二手手機顧問，請根據使用者的需求提供建議。
